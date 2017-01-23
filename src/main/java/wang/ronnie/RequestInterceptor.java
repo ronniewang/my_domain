@@ -29,6 +29,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-        System.out.println(String.format("request id {%s}, request mills {%s}", request.getAttribute(RONNIE_WANG_REQUEST_ID), request.getAttribute(RONNIE_WANG_REQUEST_START_TIME)));
+        System.out.println(String.format("request id {%s}, request mills {%s}",
+                request.getAttribute(RONNIE_WANG_REQUEST_ID), System.currentTimeMillis() - (long) request.getAttribute(RONNIE_WANG_REQUEST_START_TIME)));
     }
 }
