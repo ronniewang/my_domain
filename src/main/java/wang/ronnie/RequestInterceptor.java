@@ -21,7 +21,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         long currentTimeMillis = System.currentTimeMillis();
-        request.setAttribute(RONNIE_WANG_REQUEST_ID, currentTimeMillis + (++requestCount % 10));
+        request.setAttribute(RONNIE_WANG_REQUEST_ID, currentTimeMillis + "-" + (++requestCount % 10));
         request.setAttribute(RONNIE_WANG_REQUEST_START_TIME, currentTimeMillis);
         return true;
     }
