@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by ronnie wang on 17/1/23.
+ * 为请求前后做统一处理
+ * 现包含一下内容
+ * 1. request唯一id
+ * 2. request处理时间
+ *
+ * @author ronnie wang
  */
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
@@ -29,7 +34,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-        System.out.println(String.format("request id {%s}, request mills {%s}",
+        System.out.println(String.format("post handle request | request_id:{%s}, request_mills:{%s}",
                 request.getAttribute(RONNIE_WANG_REQUEST_ID), System.currentTimeMillis() - (long) request.getAttribute(RONNIE_WANG_REQUEST_START_TIME)));
     }
 }
