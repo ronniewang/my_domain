@@ -1,6 +1,8 @@
 package wang.ronnie;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -17,5 +19,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/about").setViewName("about");
         registry.addViewController("/contact").setViewName("contact");
         registry.addViewController("/post").setViewName("post");
+    }
+
+    @Bean
+    public RequestInterceptor requestInterceptor() {
+
+        return new RequestInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+
+        registry.addInterceptor(requestInterceptor());
     }
 }
